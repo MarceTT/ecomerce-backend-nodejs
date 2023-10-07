@@ -61,6 +61,12 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    images: [
+        {
+          public_id: String,
+          url: String,
+        },
+      ],
     isBlocked: {
         type: Boolean,
         default: false,

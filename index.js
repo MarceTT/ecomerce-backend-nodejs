@@ -14,6 +14,7 @@ const admin_routes = require('./routes/adminRoute');
 const product_routes = require('./routes/productRoute');
 const category_routes = require('./routes/categoryRoute');
 const coupon_routes = require('./routes/couponRoute');
+const contact_routes = require('./routes/contactRoute');
 
 
 
@@ -39,6 +40,8 @@ app.use("/api/products", product_routes);
 app.use("/api/categories", category_routes);
 //coupon routes
 app.use("/api/coupons", coupon_routes);
+//contact routes
+app.use("/api/contacts", contact_routes);
 
 
 app.listen(PORT , () => {

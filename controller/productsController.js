@@ -4,6 +4,7 @@ const validateMongoDbId = require("../helpers/handleMongoId");
 const { handleHttpError } = require("../helpers/handleErrors");
 const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
+const cloudinaryUploadImg = require("../helpers/handleCloudinary");
 
 const createProduct = asyncHandler(async (req, res) => {
   try {
@@ -202,5 +203,37 @@ const deleteProduct = asyncHandler(async (req, res) => {
   });
 
 
+  const uploadImages = asyncHandler(async (req, res) => {
+    //console.log(JSON.parse(JSON.stringify(req.body)));
+    console.log(req.files);
+    // const { id } = req.params;
+    // validateMongoDbId(id);
+    // try {
+    //   const uploader = async (path) => await cloudinaryUploadImg(path);
+    //   const urls = [];
+    //   const files = req.files;
+    //   for (const file of files) {
+    //     const { path } = file;
+    //     const newPath = await uploader(path);
+    //     urls.push(newPath);
+    //   }
+    //   const updateProduct = await Product.findByIdAndUpdate(
+    //     id,
+    //     {
+    //       $push: { images: urls },
+    //     },
+    //     {
+    //       new: true,
+    //     }
+    //   );
+    //   res.json(updateProduct);
+      
+    // } catch (error) {
+    //     handleHttpError(res,"ERROR_UPLOAD_IMAGES");
+      
+    // }
+  });
 
-module.exports = { createProduct, updateProduct, deleteProduct, getaProduct, getAllProduct, addToWishlist, rating };
+
+
+module.exports = { createProduct, updateProduct, deleteProduct, getaProduct, getAllProduct, addToWishlist, rating, uploadImages };

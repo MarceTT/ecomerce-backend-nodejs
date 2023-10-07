@@ -23,10 +23,8 @@ const userMiddleware = asyncHandler(async (req, res, next) => {
      }
 
 
-     const user = await Users.findById(dataToken._id).select('-refreshToken');
+     const user = await Users.findById(dataToken.user).select('-refreshToken');
      req.user = user
-
-     //console.log({user})
 
      next()
 
