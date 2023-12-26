@@ -8,11 +8,20 @@ const OrderSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Product',
             },
-            count: Number,
-            color: String,
+            band: String,
+            name: String,
+            price: Number,
+            quantity: Number,
         }
     ],
-    paymentIntent: {},
+   transactionId: {
+        type: String,
+        required: true,
+   },
+   amount: {
+        type: Number,
+        required: true,
+    },
     orderStatus: {
         type: String,
         default: 'Not Processed',
@@ -24,10 +33,16 @@ const OrderSchema = new mongoose.Schema({
             'Completed',
         ],
     },
-    orderedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
+    orderedBy: [
+        {
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        email: String,
+        name: String,
     }
+    ],
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', OrderSchema);

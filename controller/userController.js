@@ -125,13 +125,14 @@ const loginUser = asyncHandler(async (req, res) => {
       });
 
       // Send authorization roles and access token to user
-      res.json({ accessToken, _id: foundUser._id });
+      res.json({ accessToken, _id: foundUser._id, user: foundUser });
     }
   } catch (e) {
     console.log(e);
     handleHttpError(res, "ERROR_LOGIN_USER");
   }
 });
+
 
  const getUser = asyncHandler(async (req, res) => {
    try {

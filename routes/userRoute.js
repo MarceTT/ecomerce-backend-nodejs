@@ -24,7 +24,7 @@ router.post("/register", createUser);
 router.post("/login", loginUser);
 router.post("/forgot-password", forgotPassword);
 router.put("/reset-password/:token", resetPassword);
-router.get("/my-user:id", userMiddleware, getUser);
+router.get("/my-user/:id", userMiddleware, getUser);
 router.put("/update-user:id", updateUser);
 router.post("/refresh-token", handleRefreshToken);
 router.post("/logout", handleLogout);
@@ -36,5 +36,6 @@ router.post("/apply-coupon", userMiddleware, applyCoupon);
 router.post("/create-order", userMiddleware, createOrder); 
 router.get("/get-order", userMiddleware, getOrder); 
 router.put("/update-order-status", userMiddleware, updateOrderStatus);
+
 
 module.exports = router;

@@ -15,6 +15,7 @@ const product_routes = require('./routes/productRoute');
 const category_routes = require('./routes/categoryRoute');
 const coupon_routes = require('./routes/couponRoute');
 const contact_routes = require('./routes/contactRoute');
+const transbank_routes = require('./routes/transbankRoute');
 
 
 
@@ -23,10 +24,11 @@ dbConnection();
 
 const app = express();
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({ origin: ["http://127.0.0.1:5173", "http://localhost:5173"], credentials: true}));
+app.use(cookieParser());
 app.use(bodyParser.json({ limit: "500mb", extended: true}));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+
 
 
 
@@ -42,6 +44,9 @@ app.use("/api/categories", category_routes);
 app.use("/api/coupons", coupon_routes);
 //contact routes
 app.use("/api/contacts", contact_routes);
+
+//transbank routes
+app.use("/api/transbank", transbank_routes);
 
 
 app.listen(PORT , () => {

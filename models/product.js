@@ -19,6 +19,10 @@ const ProductSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
+    typeProduct: {
+        type: String,
+        required: true,
+    },
     price: {
         type: Number,
         required: true
@@ -26,10 +30,6 @@ const ProductSchema = new mongoose.Schema({
     quantity: {
         type: Number, 
         required: true
-    },
-    image: {
-        public_id: String,
-        url: String,
     },
     tags: {
         type: String,
